@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html class=lang="zh-cn">
+
+	<head>
+		<title>油气生产敏捷计算分析系统</title>
+		<meta charset="utf-8">
+		<meta name="keywords" content="#">
+		<meta name="description" content="#">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- 移动设备 viewport -->
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+		<meta name="author" content="#">
+		<!-- 360浏览器默认使用Webkit内核 -->
+		<meta name="renderer" content="webkit">
+		<!-- 禁止百度SiteAPP转码 -->
+		<meta http-equiv="Cache-Control" content="no-siteapp">
+		<!-- Chrome浏览器添加桌面快捷方式（安卓） -->
+		<link rel="icon" type="#" href="#">
+		<meta name="mobile-web-app-capable" content="yes">
+		<!-- Safari浏览器添加到主屏幕（IOS） -->
+		<link rel="icon" sizes="#" href="#">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="Admui">
+		<!-- Win8标题栏及ICON图标 -->
+		<link rel="apple-touch-icon-precomposed" href="#">
+		<meta name="msapplication-TileImage" content="#">
+		<meta name="msapplication-TileColor" content="#62a8ea">
+		<!-- 样式 -->
+		<link rel="stylesheet" href="http://cdn.admui.com/demo/pjax/1.2.0/themes/classic/global/css/bootstrap.css">
+		<link rel="stylesheet" href="http://cdn.admui.com/demo/pjax/1.2.0/themes/classic/base/css/site.css" id="siteStyle">
+		<!--<link rel="stylesheet" type="text/css" href="css/site.css" />-->
+		<!--<link rel="stylesheet" type="text/css" href="css/applogger.css"/>-->
+		<!--<link rel="stylesheet" href="css/highcharts.css" />-->
+		<!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0; url='http://www.admui.com/ie/'" />
+<![endif]-->
+		<!--[if lt IE 10]>
+<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/media-match/media.match.min.js"></script>
+<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/respond/respond.min.js"></script>
+<![endif]-->
+
+		<!-- 图标 CSS-->
+		<link rel="stylesheet" href="http://cdn.admui.com/demo/pjax/1.2.0/fonts/font-awesome/font-awesome.css">
+		<link rel="stylesheet" href="http://cdn.admui.com/demo/pjax/1.2.0/fonts/web-icons/web-icons.css">
+
+		<!-- 插件 CSS -->
+		<link rel="stylesheet" href="http://cdn.admui.com/demo/pjax/1.2.0/vendor/animsition/animsition.css">
+		<link rel="stylesheet" href="http://cdn.admui.com/demo/pjax/1.2.0/vendor/toastr/toastr.css">
+		<link rel="stylesheet" href="http://cdn.admui.com/demo/pjax/1.2.0/css/demo.css">
+		<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
+		<!--<link rel="stylesheet" href="css/applogger.css" />-->
+
+		<!--<link rel="stylesheet" href="css/bootstrap.min.css" />-->
+		<!--JSPanel CSS-->
+		<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jspanel3/3.11.0/jquery.jspanel.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" href="resources/jquery-ui/jquery-ui.complete.min.css" />-->
+
+		<!-- 插件 -->
+		<!--<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>-->
+		<script src="https://hm.baidu.com/hm.js?c9dd85291ea88dcf64671a7dfa65e0ef"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/jquery/jquery.min.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/bootstrap/bootstrap.min.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/modernizr/modernizr.min.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/breakpoints/breakpoints.min.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/artTemplate/template.min.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/toastr/toastr.min.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/bootbox/bootbox.min.js"></script>
+		<script type="text/javascript" src="js/highcharts.js"></script>
+		<script type="text/javascript" src="js/grid.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js"></script>
+		<!--<script src="http://cdn.admui.com/demo/pjax/1.2.0/themes/classic/base/js/site.js"></script>-->
+
+		<!--JSPanel插件-->
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspanel3/3.11.0/jquery.jspanel-compiled.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="resources/jquery-ui/jquery-ui-complete.min.js"></script>
+		<script src="resources/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+		<script src="resources/jspanel/jquery.jspanel.min.js"></script>
+		<script type="text/javascript" src="js/jquery.jspanel-compiled.min.js"></script>
+
+		<!-- 核心  -->
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/themes/classic/global/js/core.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/themes/classic/base/js/site.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/themes/classic/global/js/configs/site-configs.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/themes/classic/global/js/components.js"></script>
+
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c9dd85291ea88dcf64671a7dfa65e0ef";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+
+		<script>
+			Breakpoints();
+		</script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/jquery-treegrid/jquery.treegrid.min.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/jquery-cookie/jquery.cookie.min.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/js/examples/tables/treegrid.js"></script>
+		<script src="data/data.json"></script>
+		<style type="text/css">
+			.nav-pills {
+				width: 39px;
+				margin-left: 20px;
+			}
+			
+			.nav-pills.affix {
+				top: 300px;
+			}
+			
+			tbody {
+				padding-top: 0;
+				font-size: 12px;
+				color: #777777;
+				font-family: 'microsoft yahei';
+			}
+			/*h3 {
+				color: #fff;
+				display: block;
+				padding: 8px 0;
+				font-weight: 700;
+				font-size: 18px;
+				line-height: 22px;
+			}*/
+		</style>
+
+	</head>
+
+	<body class="site-contabs-open site-menubar-unfold" data-spy="scroll" data-target="#myScrollspy">
+
+		<nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-inverse " role="navigation">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle hamburger hamburger-close navbar-toggle-left hided unfolded" data-toggle="menubar">
+            <span class="sr-only">切换菜单</span> <span class="hamburger-bar"></span>
+        </button>
+				<button type="button" class="navbar-toggle collapsed" data-target="#admui-navbarCollapse" data-toggle="collapse">
+            <i class="icon wb-more-horizontal" aria-hidden="true"></i>
+        </button>
+				<div class="navbar-brand navbar-brand-center site-gridmenu-toggle width-full" data-toggle="gridmenu">
+					<p>AgileProduction</p>
+				</div>
+			</div>
+			<div class="navbar-container container-fluid">
+				<div class="collapse navbar-collapse navbar-collapse-toolbar" id="admui-navbarCollapse">
+					<ul class="nav navbar-toolbar navbar-left">
+						<li class="hidden-float">
+							<a data-toggle="menubar" class="hidden-float hided unfolded" href="javascript:;" role="button" id="admui-toggleMenubar">
+								<i class="icon hamburger hamburger-arrow-left"> 
+                      		<span class="sr-only">切换目录</span>
+                            <span class="hamburger-bar"></span> 
+                        </i>
+							</a>
+						</li>
+
+					</ul>
+					<ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+						<li class="dropdown" id="admui-navbarMessage">
+							<a data-toggle="dropdown" href="javascript:;" class="msg-btn" aria-expanded="false" data-animation="scale-up" role="button">
+								<i class="icon wb-bell" aria-hidden="true"></i>
+								<span class="badge badge-danger up msg-num">69</span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
+								<li class="dropdown-menu-header" role="presentation">
+									<h5>最新消息</h5>
+									<span class="label label-round label-danger"></span>
+								</li>
+								<li class="list-group" role="presentation">
+									<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 220px;">
+										<div class="navbar-message-content" id="admui-messageContent" data-height="220px" data-plugin="slimScroll" style="overflow: hidden; width: auto; height: 220px;"></div>
+										<div class="slimScrollBar" style="background: rgb(118, 131, 143); width: 4px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 4px; z-index: 99; right: 1px;"></div>
+										<div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 4px; background: rgb(204, 213, 219); opacity: 0.1; z-index: 90; right: 1px;"></div>
+									</div>
+									<script type="text/html" id="admui-messageTpl">
+										{{if msgList.length
+										< 1}} <p class="text-center height-200 vertical-align">
+											<small class="vertical-align-middle opacity-four">没有新消息</small>
+											</p>
+											{{else}} {{each msgList}}
+											<a class="list-group-item" href="#" data-message-id="{{$value.messageId}}" data-title="{{$value.title}}" data-content="{{$value.content}}" role="menuitem">
+												<div class="media">
+													<div class="media-left padding-right-10">
+														<i class="icon {{$value.type | iconType}} white icon-circle" aria-hidden="true"></i>
+													</div>
+													<div class="media-body">
+														<h6 class="media-heading">{{$value.title}}</h6>
+														<time class="media-meta" datetime="{{$value.sendTime}}">
+                                                        {{$value.sendTime | timeMsg}}
+                                                    </time>
+													</div>
+												</div>
+											</a>{{/each}} {{/if}}
+									</script>
+								</li>
+								<li class="dropdown-menu-footer" role="presentation">
+									<a href="/system/account/message" target="_blank" data-pjax="">
+										<i class="icon fa-navicon"></i> 所有消息
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="open-kf" id="admui-service" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="在线咨询">
+							<a class="icon wb-user" href="#" role="button">
+								<span class="sr-only">登录用户</span></a>
+						</li>
+						<li class="hidden-xs" id="admui-navbarFullscreen" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="全屏">
+							<a class="icon icon-fullscreen" data-toggle="fullscreen" href="#" role="button">
+								<span class="sr-only">全屏</span>
+							</a>
+						</li>
+						<li>
+							<a class="icon fa-sign-out" id="admui-signOut" data-ctx="" data-user="9" href="/system/logout" role="button">
+								<span class="sr-only">退出</span>
+							</a>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<nav class="site-menubar site-menubar-dark">
+			<div class="site-menubar-body">
+				<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+					<div class="tab-content height-full" id="admui-navTabs" style="overflow: hidden; width: auto; height: 100%;">
+						<!-- 一级菜单 -->
+
+						<div class="tab-pane animation-fade height-full  active" id="admui-navTabsItem-3" role="tabpanel">
+							<div>
+								<ul class="site-menu">
+
+									<!-- 二级菜单 -->
+
+									<li class="site-menu-category">系统导航</li>
+									<!-- 三级菜单 -->
+
+									<li class="site-menu-item">
+										<a data-pjax="" href="index_monitor.html" target="_blank">
+											<i class="site-menu-icon fa-table" aria-hidden="true"></i><span class="site-menu-title">数据监测</span>
+										</a>
+									</li>
+									<li class="site-menu-item  active">
+										<a data-pjax="" href="inquire_fsDiagnosis.html" target="_blank">
+											<i class="site-menu-icon fa-table" aria-hidden="true"></i><span class="site-menu-title">指标查询</span>
+										</a>
+									</li>
+
+									<li class="site-menu-item">
+										<a data-pjax="" href="total_production.html" target="_blank">
+											<i class="site-menu-icon fa-bars" aria-hidden="true"></i><span class="site-menu-title">数据汇总</span>
+										</a>
+									</li>
+
+									<li class="site-menu-item has-sub">
+										<a href="javascript:;"><i class="site-menu-icon fa-list-alt" aria-hidden="true"></i><span class="site-menu-title">数据管理</span><span class="site-menu-arrow"></span></a>
+										<ul class="site-menu-sub">
+											<!-- 四级菜单 -->
+
+											<li class="site-menu-item ">
+												<a data-pjax="" href="/tables/data-tables/basic-init/index" target="_blank">
+													<span class="site-menu-title">井名信息</span>
+												</a>
+											</li>
+
+											<li class="site-menu-item ">
+												<a data-pjax="" href="/tables/data-tables/advanced-init/index" target="_blank">
+													<span class="site-menu-title">井身轨迹</span>
+												</a>
+											</li>
+
+											<li class="site-menu-item ">
+												<a data-pjax="" href="/tables/data-tables/data-sources/index" target="_blank">
+													<span class="site-menu-title">功图上传</span>
+												</a>
+											</li>
+
+											<li class="site-menu-item ">
+												<a data-pjax="" href="/tables/data-tables/api/index" target="_blank">
+													<span class="site-menu-title">日动态</span>
+												</a>
+											</li>
+
+											<li class="site-menu-item ">
+												<a data-pjax="" href="/tables/data-tables/ajax/index" target="_blank">
+													<span class="site-menu-title">作业数据</span>
+												</a>
+											</li>
+
+											<li class="site-menu-item ">
+												<a data-pjax="" href="/tables/data-tables/server-side/index" target="_blank">
+													<span class="site-menu-title">运行计划</span>
+												</a>
+											</li>
+
+											<li class="site-menu-item ">
+												<a data-pjax="" href="/tables/data-tables/plug-ins/index" target="_blank">
+													<span class="site-menu-title">平衡数据</span>
+												</a>
+											</li>
+
+											<li class="site-menu-item has-sub">
+												<a href="javascript:;">
+													<span class="site-menu-title">报警设置</span><span class="site-menu-arrow"></span>
+												</a>
+												<ul class="site-menu-sub">
+													<!-- 五级菜单 -->
+
+													<li class="site-menu-item ">
+														<a data-pjax="" href="/menu" target="_blank">
+															<span class="site-menu-title">工况设置</span>
+														</a>
+													</li>
+
+													<li class="site-menu-item ">
+														<a data-pjax="" href="/menu" target="_blank">
+															<span class="site-menu-title">波动设置</span>
+														</a>
+													</li>
+
+													<li class="site-menu-item ">
+														<a data-pjax="" href="/menu" target="_blank">
+															<span class="site-menu-title">运行状态</span>
+														</a>
+													</li>
+													<li class="site-menu-item ">
+														<a data-pjax="" href="/menu" target="_blank">
+															<span class="site-menu-title">阈值设置</span>
+														</a>
+													</li>
+													<li class="site-menu-item ">
+														<a data-pjax="" href="/menu" target="_blank">
+															<span class="site-menu-title">开关量设置</span>
+														</a>
+													</li>
+													<li class="site-menu-item ">
+														<a data-pjax="" href="/menu" target="_blank">
+															<span class="site-menu-title">报警颜色</span>
+														</a>
+													</li>
+
+													<!-- 五级菜单 -->
+												</ul>
+											</li>
+
+											<!-- 四级菜单 -->
+										</ul>
+									</li>
+									<li class="site-menu-item has-sub">
+										<a href="javascript:;"><i class="site-menu-icon fa-list-alt" aria-hidden="true"></i><span class="site-menu-title">系统管理</span><span class="site-menu-arrow"></span></a>
+										<ul class="site-menu-sub">
+											<!-- 四级菜单 -->
+
+											<li class="site-menu-item ">
+												<a data-pjax="" href="/tables/data-tables/basic-init/index" target="_blank">
+													<span class="site-menu-title">组织结构</span>
+												</a>
+											</li>
+
+											<li class="site-menu-item ">
+												<a data-pjax="" href="/tables/data-tables/advanced-init/index" target="_blank">
+													<span class="site-menu-title">用户</span>
+												</a>
+											</li>
+
+											<li class="site-menu-item ">
+												<a data-pjax="" href="/tables/data-tables/data-sources/index" target="_blank">
+													<span class="site-menu-title">权限</span>
+												</a>
+											</li>
+
+											<li class="site-menu-item ">
+												<a data-pjax="" href="/tables/data-tables/api/index" target="_blank">
+													<span class="site-menu-title">字典</span>
+												</a>
+											</li>
+											<!-- 四级菜单 -->
+										</ul>
+									</li>
+
+									<!-- 三级菜单 -->
+
+									<!-- 二级菜单 -->
+
+								</ul>
+							</div>
+						</div>
+
+						<!-- 一级菜单 -->
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<nav class="site-contabs" id="admui-siteConTabs">
+			<button type="button" class="btn btn-icon btn-default pull-left hide">
+        <i class="icon fa-angle-double-left"></i>
+    </button>
+			<div class="contabs-scroll pull-left">
+				<ul class="nav con-tabs" style="width: 210px;">
+					<li class="">
+						<a data-pjax="" href="/home" rel="contents"><span>首页</span></a>
+					</li>
+					<!--<li class="active">
+						<a href="index.html" title="
+                            	指标查询
+                            " rel="contents"><span>
+                            	指标查询
+                            </span><i class="icon wb-close-mini"></i></a>
+					</li>-->
+					<li class="active">
+						<a data-pjax="#admui-pageContent" href="/AgileWeb/well_total.html" title="数据汇总" rel="contents">
+							<span>数据汇总</span>
+							<i class="icon wb-close-mini"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="btn-group pull-right">
+				<button type="button" class="btn btn-icon btn-default hide">
+            <i class="icon fa-angle-double-right"></i>
+        </button>
+				<button type="button" class="btn btn-default dropdown-toggle btn-outline" data-toggle="dropdown" aria-expanded="false">
+            <span class="caret"></span> <span class="sr-only">切换菜单</span>
+        </button>
+				<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="conTabsDropdown" role="menu">
+					<li class="reload-page" role="presentation">
+						<a href="javascript:;" role="menuitem"><i class="icon wb-reload"></i> 刷新当前</a>
+					</li>
+					<li class="close-other" role="presentation">
+						<a href="javascript:;" role="menuitem"><i class="icon wb-close"></i> 关闭其他</a>
+					</li>
+					<li class="close-all" role="presentation">
+						<a href="javascript:;" role="menuitem"><i class="icon wb-power"></i> 关闭所有</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!--data-offset="520"-->
+		<main class="site-page">
+			<div class="page-container" id="admui-pageContent">
+				<div class="page animation-fade page-tables">
+					<div class="page-content" style="padding: 0;">
+						<div class="panel testcontainer">
+							<div class="panel-body container-fluid" style="overflow: hidden;">
+								<div class="row">
+									<div class="col-md-1 pull-right" id="myScrollspy">
+										<ul class="nav nav-pills nav-stacked" data-spy="affix" style="background-color: #526069;">
+											<li>
+												<a href="total_production.html"><i class="fa fa-arrow-left"></i></a>
+											</li>
+										</ul>
+									</div>
+									<div class="col-md-11">
+										<div class="row" id="gailan">
+											<div class="col-md-8">
+												<div class="panel">
+													<div class="panel-heading" style="background-color: #9F633E;padding: 9px 20px;">
+
+														<h3 class="panel-title" style="color: #fff;display: block;padding: 8px 0;font-weight: 700;font-size: 18px;line-height: 22px;">单井日汇总</h3>
+
+													</div>
+													<div class="panel-body table-responsive" style="padding: 0px;">
+														<table class="table table-striped  table-hover table-bordered ">
+															<tbody>
+																<tr>
+																	<td>井名:J01-001</td>
+																	<td>日期：2017-12-28</td>
+																	<td>举升方式：抽油机</td>
+																</tr>
+																<tr>
+																	<td>日运行时率：0.9</td>
+																	<td>日运行时间：8h</td>
+																	<td>日运行区间：00:00-23:59</td>
+																</tr>
+																<tr>
+																	<td>日产液量：29.9t</td>
+																	<td>日产油量：17.34t</td>
+																	<td>日产水量：12.56t</td>
+
+																</tr>
+																<tr>
+																	<td>含水率：42%</td>
+																	<td>充满系数：0.8</td>
+																	<td>日用电量：294KW·h</td>
+																</tr>
+																<tr>
+																	<td>系统效率:31.4%</td>
+																	<td>井下效率:48.5%</td>
+																	<td>地面效率：64.7%</td>
+																</tr>
+																<tr>
+																	<td>吨液百米耗电量：0.86KW·h/100m·t</td>
+																	<td>平衡度：113.5%</td>
+																	<td>移动距离：-20cm</td>
+																</tr>
+																<tr>
+																	<td>累计运转：3400h</td>
+																	<td>一保：650h</td>
+																	<td>二保:2300h</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="panel">
+													<div class="panel-heading" style="background-color: #834B4C;padding: 9px 20px;">
+														<h3 class="panel-title" style="color: #fff;display: block;padding: 8px 0;font-weight: 700;font-size: 18px;line-height: 22px;">地面功图</h3>
+													</div>
+													<div class="panel-body" style="padding: 0px;">
+														<div id="TotaldynImageDetail_Id" style="width:100%;height:250px;"></div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="row" id="qushi">
+											<div class="col-md-12">
+												<div class="panel">
+													<nav class="navbar navbar-default" role="navigation" style="background-color: #5F5D9A;border-radius: 0px;">
+														<div class="navbar-header">
+															<span class="navbar-brand"><span style="color: #fff;">趋势曲线</span></span>
+														</div>
+														<div class="collapse navbar-collapse navbar-right">
+															<ul class="nav navbar-nav">
+																<li class="active">
+																	<a href="#tendency-curve" data-toggle="tab" style="color: #fff;">曲线</a>
+																</li>
+																<li>
+																	<a href="#tendency-table" data-toggle="tab" style="color: #fff;">列表</a>
+																</li>
+																<li>
+																	<a data-toggle="collapse" data-parent="#panelGroup" href="#collapseDiagram">
+																		<i class="fa fa-chevron-up" id="fa-chevron-toggle-diagram" style="color: #fff;"></i>
+																	</a>
+																</li>
+															</ul>
+														</div>
+													</nav>
+													<div id="collapseDiagram" class="panel-collapse collapse in">
+														<div class="panel-body" style="padding: 0px;">
+															<div class="tab-content">
+																<div class="tab-pane fade in active" id="tendency-curve">
+																	<div class="row">
+																		<div class="col-md-9 col-sm-9 col-xs-9">
+																			<div class="btn-group" style="padding-bottom: 10px;">
+																				<button type="button" class="btn btn-default" value="20171222"><i class="icon-tt-selected"></i>今天</button>
+																				<button type="button" class="btn btn-default" value="20171221"><i class="icon-tt-selected"></i>昨天</button>
+																				<button type="button" class="btn btn-default" value="20171216-20171222" aria-pressed="true"><i class="icon-tt-selected"></i>最近7天</button>
+																				<button type="button" class="btn btn-default" value="20171123-20171222"><i class="icon-tt-selected"></i>最近30天</button>
+																				<div id="daterange" class="btn-group hidden-xs">
+																					<button class="btn date-range-custom">2017-11-12 至 2017-11-23</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+																	<div class="tab-content">
+																		<div class="tab-pane fade in active" id="curve">
+<!--
+																			<div id="container-DailyTotalProduction" dir="ltr" class="highcharts-container" style="position: relative; overflow: hidden;z-index: 0;min-height: 250px;">
+																			</div>
+-->
+																			<div id="container-DailyProduction" dir="ltr" class="highcharts-container" style="position: relative; overflow: hidden;z-index: 0;min-height: 250px;">
+																			</div>
+																			<div id="container-DailyTimeEff" dir="ltr" class="highcharts-container" style="position: relative; overflow: hidden;z-index: 0;min-height: 250px;">
+																			</div>
+																			<div id="container-DailyPowerCon" dir="ltr" class="highcharts-container" style="position: relative; overflow: hidden;z-index: 0;min-height: 250px;">
+																			</div>
+																			<div id="container-DailySysEff" dir="ltr" class="highcharts-container" style="position: relative; overflow: hidden;z-index: 0;min-height: 250px;">
+																			</div>
+																			<div id="container-DailyBalance" dir="ltr" class="highcharts-container" style="position: relative; overflow: hidden;z-index: 0;min-height: 250px;">
+																			</div>
+																		</div>
+																	</div>
+
+																</div>
+
+																<div class="tab-pane fade in" id="tendency-table">
+																	<div class="row">
+																		<div class="col-md-9 col-sm-9 col-xs-9">
+																			<div class="btn-group" style="padding-bottom: 10px;">
+																				<button type="button" class="btn btn-default dates date-range-today" value="20171222"><i class="icon-tt-selected"></i>今天</button>
+																				<button type="button" class="btn btn-default dates date-range-yesterday" value="20171221"><i class="icon-tt-selected"></i>昨天</button>
+																				<button type="button" class="btn btn-default dates date-range-7-days" value="20171216-20171222" aria-pressed="true"><i class="icon-tt-selected"></i>最近7天</button>
+																				<button type="button" class="btn btn-default dates date-range-30-days" value="20171123-20171222"><i class="icon-tt-selected"></i>最近30天</button>
+																				<div id="daterange" class="btn-group hidden-xs">
+																					<button class="btn date-range-custom">2017-11-12 至 2017-11-23</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+																	<div class="tab-content">
+																		<div class="tab-pane fade in active pre-scrollable" id="table" style="max-height:400px;">
+																			<table class="table table-bordered table-striped table-condensed">
+																				<tbody>
+																					<tr>
+																					    <th>序号</th>
+																						<th>井名</th>
+																						<th>日期</th>
+																						<th>日产液量<br/>(t/d)</th>
+																						<th>日产油量 <br/>(t/d)</th>
+																						<th>日产水量 <br/>(t/d)</th>
+																						<th>含水率<br/>(%)</th>
+																						<th>日运行时间<br/>(h)</th>
+																						<th>日运行时率<br/>(小数</th>
+																						<th>日用电量<br/>(KW·h)</th>
+																						<th>日吨液百米耗电量 <br/>(KW·h/100m·t)</th>
+																						<th>系统效率 <br/>(%)</th>
+																						<th>地面效率<br/>(%)</th>
+																						<th>井下效率<br/>(%)</th>
+																						<th>日平衡度 <br/>(%)</th>
+																					</tr>
+																					<tr>
+																					    <td>1</td>
+																						<td>J01-001</td>
+																						<td>2017-12-28</td>
+																						<td>129.55</td>
+																						<td>1.15</td>
+																						<td>128.4</td>
+																						<td>99.11</td>
+																						<td>24</td>
+																						<td>1</td>
+																						<td>300.2</td>
+																						<td>0.87</td>
+																						<td>31.2</td>
+																						<td>49.1</td>
+																						<td>63.6</td>
+																						<td>113.5</td>
+																					</tr>
+																					<tr>
+																					    <td>2</td>
+																						<td>J01-001</td>
+																						<td>2017-12-27</td>
+																						<td>127.81</td>
+																						<td>1.27</td>
+																						<td>126.54</td>
+																						<td>99.01</td>
+																						<td>24</td>
+																						<td>1</td>
+																						<td>298.6</td>
+																						<td>0.86</td>
+																						<td>30.2</td>
+																						<td>48.3</td>
+																						<td>62.5</td>
+																						<td>117.5</td>
+																					</tr>
+																					<tr>
+																					    <td>3</td>
+																						<td>J01-001</td>
+																						<td>2017-12-26</td>
+																						<td>126.03</td>
+																						<td>1.81</td>
+																						<td>124.22</td>
+																						<td>98.56</td>
+																						<td>24</td>
+																						<td>1</td>
+																						<td>300.4</td>
+																						<td>0.88</td>
+																						<td>31.2</td>
+																						<td>48.6</td>
+																						<td>64.2</td>
+																						<td>114.2</td>
+																					</tr>
+																					<tr>
+																					    <td>4</td>
+																						<td>J01-001</td>
+																						<td>2017-12-25</td>
+																						<td>124.11</td>
+																						<td>1.07</td>
+																						<td>123.04</td>
+																						<td>99.14</td>
+																						<td>24</td>
+																						<td>1</td>
+																						<td>300.8</td>
+																						<td>0.87</td>
+																						<td>32.2</td>
+																						<td>49.2</td>
+																						<td>65.4</td>
+																						<td>107.8</td>
+																					</tr>
+																					<tr>
+																					    <td>5</td>
+																						<td>J01-001</td>
+																						<td>2017-12-24</td>
+																						<td>121.82</td>
+																						<td>0.72</td>
+																						<td>121.1</td>
+																						<td>99.41</td>
+																						<td>24</td>
+																						<td>1</td>
+																						<td>302.4</td>
+																						<td>0.89</td>
+																						<td>30.6</td>
+																						<td>48.5</td>
+																						<td>63.1</td>
+																						<td>106.9</td>
+																					</tr>
+																					<tr>
+																					    <td>6</td>
+																						<td>J01-001</td>
+																						<td>2017-12-23</td>
+																						<td>126.12</td>
+																						<td>1.66</td>
+																						<td>124.46</td>
+																						<td>98.68</td>
+																						<td>24</td>
+																						<td>1</td>
+																						<td>298.6</td>
+																						<td>0.91</td>
+																						<td>30.6</td>
+																						<td>48.9</td>
+																						<td>62.5</td>
+																						<td>110.7</td>
+																					</tr>
+																					<tr>
+																					    <td>7</td>
+																						<td>J01-001</td>
+																						<td>2017-12-22</td>
+																						<td>130.07</td>
+																						<td>2.3</td>
+																						<td>127.77</td>
+																						<td>98.23</td>
+																						<td>24</td>
+																						<td>1</td>
+																						<td>299.8</td>
+																						<td>0.9</td>
+																						<td>31.4</td>
+																						<td>49.5</td>
+																						<td>63.4</td>
+																						<td>112.3</td>
+																					</tr>
+																					<tr>
+																					    <td>8</td>
+																						<td>J01-001</td>
+																						<td>2017-12-21</td>
+																						<td>134.33</td>
+																						<td>1.01</td>
+																						<td>133.32</td>
+																						<td>99.25</td>
+																						<td>24</td>
+																						<td>1</td>
+																						<td>299.4</td>
+																						<td>0.87</td>
+																						<td>32.1</td>
+																						<td>49.7</td>
+																						<td>64.6</td>
+																						<td>116.5</td>
+																					</tr>
+																					<tr>
+																					    <td>9</td>
+																						<td>J01-001</td>
+																						<td>2017-12-20</td>
+																						<td>137.55</td>
+																						<td>2.13</td>
+																						<td>135.42</td>
+																						<td>98.45</td>
+																						<td>24</td>
+																						<td>1</td>
+																						<td>300.2</td>
+																						<td>0.86</td>
+																						<td>31.5</td>
+																						<td>48.1</td>
+																						<td>65.4</td>
+																						<td>109.6</td>
+																					</tr>
+																					<tr>
+																					    <td>10</td>
+																						<td>J01-001</td>
+																						<td>2017-12-19</td>
+																						<td>114.84</td>
+																						<td>0.91</td>
+																						<td>113.93</td>
+																						<td>99.21</td>
+																						<td>21.12</td>
+																						<td>0.88</td>
+																						<td>262.5</td>
+																						<td>0.88</td>
+																						<td>30.7</td>
+																						<td>48.7</td>
+																						<td>63.1</td>
+																						<td>106.9</td>
+																					</tr>
+																					<tr>
+																					    <td>11</td>
+																						<td>J01-001</td>
+																						<td>2017-12-18</td>
+																						<td>132.77</td>
+																						<td>1.79</td>
+																						<td>130.98</td>
+																						<td>98.65</td>
+																						<td>24</td>
+																						<td>1</td>
+																						<td>302.3</td>
+																						<td>0.87</td>
+																						<td>31.1</td>
+																						<td>48.5</td>
+																						<td>64.1</td>
+																						<td>116.4</td>
+																					</tr>
+																					<tr>
+																					    <td>12</td>
+																						<td>J01-001</td>
+																						<td>2017-12-17</td>
+																						<td>131.05</td>
+																						<td>1.78</td>
+																						<td>129.27</td>
+																						<td>98.64</td>
+																						<td>24</td>
+																						<td>1</td>
+																						<td>300.4</td>
+																						<td>0.87</td>
+																						<td>31.4</td>
+																						<td>49.3</td>
+																						<td>63.7</td>
+																						<td>120.3</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<script src="js/style.js"></script>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer class="site-footer">
+			<div class="site-footer-legal">北京科斯奇石油科技有限公司 ©
+				<a href="http://www.cosogoil.com" target="_blank">COSOG</a>
+			</div>
+			<div class="site-footer-right">
+				当前版本：v6.5
+			</div>
+		</footer>
+
+		<!-- 布局 -->
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/themes/classic/base/js/sections/menu.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/themes/classic/base/js/sections/media-menu.js"></script>
+<!--		<script src="http://cdn.admui.com/demo/pjax/1.2.0/themes/classic/base/js/sections/content-tabs.js"></script>-->
+
+		<!-- 插件 -->
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/jquery-pjax/jquery.pjax.min.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/themes/classic/global/js/plugins/responsive-tabs.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/ashoverscroll/jquery-asHoverScroll.min.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="http://cdn.admui.com/demo/pjax/1.2.0/vendor/screenfull/screenfull.min.js"></script>
+		<!--<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>-->
+		<!--<script>
+			"use strict";
+
+			$.jsPanel({
+				selector: '.testcontainer',
+				position: 'top right',
+				contentSize:  { width: 700, height: 270 },
+				draggable: {
+					containment: "parent"
+				}
+			});
+		</script>-->
+		<!--<script>
+			$(function() {
+				$('.pre-scrollable').css('max-height', $('.site-menubar').height() - 120 + 'px');
+				$(window).resize(function() {
+					$('.pre-scrollable').css('max-height', $('.site-menubar').height() - 120 + 'px');
+				});
+			});
+		</script>-->
+		<script type="text/javascript">
+			function toggleBtn(el, classA, classB, type) {
+				$(el).click(function() {
+					var that = $(this);
+					if(type == "class") {
+						if(that.hasClass(classA)) {
+							that.removeClass(classA).addClass(classB);
+						} else {
+							that.removeClass(classB).addClass(classA);
+						}
+					} else {
+						if(that.text() == classA) {
+							that.text(classB);
+						} else {
+							that.text(classA);
+						}
+					}
+				})
+			}
+
+			//        toggleBtn('#fa-chevron-toggle', 'fa fa-chevron-up', 'fa fa-chevron-down', 'class');
+			toggleBtn('#fa-chevron-toggle-general', 'fa fa-chevron-up', 'fa fa-chevron-down', 'class');
+			toggleBtn('#fa-chevron-toggle-wellBore', 'fa fa-chevron-up', 'fa fa-chevron-down', 'class');
+			toggleBtn('#fa-chevron-toggle-surface', 'fa fa-chevron-up', 'fa fa-chevron-down', 'class');
+			toggleBtn('#fa-chevron-toggle-diagram', 'fa fa-chevron-up', 'fa fa-chevron-down', 'class');
+			toggleBtn('#fa-chevron-toggle-history', 'fa fa-chevron-up', 'fa fa-chevron-down', 'class');
+
+			$('#collapseGeneral').collapse('show');
+			$('#collapseWellBore').collapse('show');
+			$('#collapseSurface').collapse('show');
+			$('#collapseDiagram').collapse('show');
+			$('#collapseHistory').collapse('show');
+			
+			//功图叠加
+        	initMultiSurfaceCardChart(gtdjdata, "", "J01-001", "2017-12-18", "TotaldynImageDetail_Id");
+		</script>
+
+	</body>
+
+</html>
+
+</html>
